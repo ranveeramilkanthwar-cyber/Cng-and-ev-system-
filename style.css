@@ -1,0 +1,36 @@
+/* Custom Glassmorphism Styles */
+.glass-card {
+    background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+    backdrop-filter: blur(12px); /* Blurred background */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Depth shadow */
+}
+
+/* Update Modal for Glass Effect */
+.modal-content {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Input Fields */
+input, select {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(5px);
+    color: white !important;
+}
+
+/* Animation for cards */
+@keyframes glass-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-glass {
+    animation: glass-fade-in 0.6s ease-out forwards;
+}
+
