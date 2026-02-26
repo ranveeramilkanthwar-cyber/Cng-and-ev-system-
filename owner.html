@@ -1,0 +1,27 @@
+import { db, storage } from './firebase-config.js';
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+async function registerNewStation(ownerId, stationData, file) {
+    // 1. Upload the Station Image or License to Storage
+    const storageRef = ref(storage, `stations/${ownerId}_identity.jpg`);
+    await uploadBytes(storageRef, file);
+    const imageUrl = await getDownloadURL(storageRef);
+
+    // 2. Save to the 'stations' collection you just created
+    await setDoc(doc(db, "stations", ownerId), {
+        name: stationData.name,
+        location: stationData.address,
+        lat: stationData.lat,
+        lng: stationData.lng,
+        type: stationData.type, // EV or CNG
+        ownerId: ownerId,
+        imageUrl: imageUrl,
+        available_slots: stationData.slots,
+        total_slots: stationData.slots,
+        status: "active"
+    });
+    
+    alert("Station registered successfully!");
+}
+
