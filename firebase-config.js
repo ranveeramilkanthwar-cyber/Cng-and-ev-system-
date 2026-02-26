@@ -1,4 +1,3 @@
-// firebase-config.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -14,10 +13,7 @@ const firebaseConfig = {
   measurementId: "G-2P7VBHQV86"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Export services to use in auth.js, owner.js, etc.
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
